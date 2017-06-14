@@ -1,0 +1,42 @@
+{
+  "projects": [
+    {
+      "id": 64,
+      "name": "STS",
+      "identifier": "sts",
+      "description": "ZCZ Stroje - mobilní aplikace \r\n\r\nDokument projektu: https://docs.google.com/document/d/1ys-tq8bw5wE7ivvCJpBwVhwQPDc7xhl6TPZUcloemjE/edit\r\n",
+      "parent": {
+        "id": 9,
+        "name": "Zeppelin"
+      },
+      "status": 1,
+      "custom_fields": [
+        {
+          "id": 9,
+          "name": "Grafika",
+          "value": "https://www.dropbox.com/sh/i2iywl3an4uk9yy/AABZo0UeJYv0r_Sn3SvG_RHTa/screeny?dl=0"
+        },
+        {
+          "id": 8,
+          "name": "Prototyp",
+          "value": "http://zeppelin-sts.appio.cz/"
+        },
+        {
+          "id": 5,
+          "name": "Slack Channel",
+          "value": "zcz-sts"
+        },
+        {
+          "id": 4,
+          "name": "Slack URL",
+          "value": ""
+        }
+      ],
+      "created_on": "2016-10-19T13:30:55Z",
+      "updated_on": "2016-11-15T20:36:32Z"
+    }
+  ],
+  "total_count": 3,
+  "offset": 2,
+  "limit": 2
+}

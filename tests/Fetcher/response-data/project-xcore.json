@@ -1,0 +1,38 @@
+{
+  "project": {
+    "id": 2,
+    "name": "Xcore",
+    "identifier": "xcore",
+    "description": "",
+    "homepage": "",
+    "parent": {
+      "id": 1,
+      "name": "Appio"
+    },
+    "status": 1,
+    "custom_fields": [
+      {
+        "id": 9,
+        "name": "Grafika",
+        "value": ""
+      },
+      {
+        "id": 8,
+        "name": "Prototyp",
+        "value": "https://invis.io/WHA9PDYT6"
+      },
+      {
+        "id": 5,
+        "name": "Slack Channel",
+        "value": "xcore"
+      },
+      {
+        "id": 4,
+        "name": "Slack URL",
+        "value": ""
+      }
+    ],
+    "created_on": "2015-12-07T09:12:31Z",
+    "updated_on": "2016-04-21T07:42:12Z"
+  }
+}

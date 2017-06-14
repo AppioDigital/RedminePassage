@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<ruleset name="Xcore">
+    <arg name="colors"/>
+    <arg value="sp"/>
+
+    <rule ref="PSR2"/>
+</ruleset>
