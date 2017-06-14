@@ -1,0 +1,73 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "name": "Appio",
+      "identifier": "appio",
+      "description": "",
+      "status": 1,
+      "custom_fields": [
+        {
+          "id": 9,
+          "name": "Grafika",
+          "value": ""
+        },
+        {
+          "id": 8,
+          "name": "Prototyp",
+          "value": ""
+        },
+        {
+          "id": 5,
+          "name": "Slack Channel",
+          "value": ""
+        },
+        {
+          "id": 4,
+          "name": "Slack URL",
+          "value": ""
+        }
+      ],
+      "created_on": "2015-12-07T08:41:39Z",
+      "updated_on": "2015-12-07T08:41:39Z"
+    },
+    {
+      "id": 3,
+      "name": "Bike Fun",
+      "identifier": "bike-fun",
+      "description": "Projekty pro jednoho z největších výrobců kol v Evropě.",
+      "parent": {
+        "id": 1,
+        "name": "Appio"
+      },
+      "status": 1,
+      "custom_fields": [
+        {
+          "id": 9,
+          "name": "Grafika",
+          "value": ""
+        },
+        {
+          "id": 8,
+          "name": "Prototyp",
+          "value": ""
+        },
+        {
+          "id": 5,
+          "name": "Slack Channel",
+          "value": "#bfi"
+        },
+        {
+          "id": 4,
+          "name": "Slack URL",
+          "value": ""
+        }
+      ],
+      "created_on": "2015-12-16T16:15:44Z",
+      "updated_on": "2015-12-16T16:15:44Z"
+    }
+  ],
+  "total_count": 3,
+  "offset": 0,
+  "limit": 2
+}
