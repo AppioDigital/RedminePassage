@@ -16,6 +16,8 @@ class Issue
 
     const DESCRIPTION_KEY = 'description';
 
+    const DONE_RATIO_KEY = 'done_ratio';
+
     const ADDITIONAL_COSTS_ID = 1;
 
     const ADDITIONAL_COST_NAME = 'Více práce';
@@ -43,6 +45,9 @@ class Issue
 
     /** @var string */
     private $description;
+
+    /** @var int */
+    private $doneRatio;
 
     /** @var Tracker */
     private $tracker;
@@ -77,11 +82,15 @@ class Issue
     /** @var Attachment[] */
     private $attachments;
 
+    /** @var Journal[] */
+    private $journals;
+
     /**
      * @param int $id
      * @param IssueProject $project
      * @param string $subject
      * @param string $description
+     * @param int $doneRatio
      * @param Tracker $tracker
      * @param Priority $priority
      * @param Status $status
@@ -94,6 +103,7 @@ class Issue
         IssueProject $project,
         string $subject,
         string $description,
+        int $doneRatio,
         Tracker $tracker,
         Priority $priority,
         Status $status,
@@ -105,6 +115,7 @@ class Issue
         $this->project = $project;
         $this->subject = $subject;
         $this->description = $description;
+        $this->doneRatio = $doneRatio;
         $this->tracker = $tracker;
         $this->priority = $priority;
         $this->status = $status;
@@ -129,8 +140,8 @@ class Issue
      * @param User|null $assignedTo
      * @param Attachment[] $attachments
      * @param array $customFields
+     * @param array $journals
      * @return Issue
-     * @throws \InvalidArgumentException
      */
     public static function createFromArray(
         array $data,
@@ -145,16 +156,21 @@ class Issue
         ?DateTime $dueDate = null,
         User $assignedTo = null,
         array $attachments = [],
-        array $customFields = []
+        array $customFields = [],
+        array $journals = []
     ): Issue {
 
-        CheckAttributeKeyUtil::checkKeys($data, [self::ID_KEY, self::SUBJECT_KEY, self::DESCRIPTION_KEY]);
+        CheckAttributeKeyUtil::checkKeys(
+            $data,
+            [self::ID_KEY, self::SUBJECT_KEY, self::DESCRIPTION_KEY, self::DONE_RATIO_KEY]
+        );
 
         $issue = new self(
             $data[self::ID_KEY],
             $project,
             $data[self::SUBJECT_KEY],
             $data[self::DESCRIPTION_KEY],
+            $data[self::DONE_RATIO_KEY],
             $tracker,
             $priority,
             $status,
@@ -173,6 +189,7 @@ class Issue
 
         $issue->setAttachments($attachments);
         $issue->setCustomFields($customFields);
+        $issue->setJournals($journals);
 
         if ($assignedTo !== null) {
             $issue->setAssignedTo($assignedTo);
@@ -227,6 +244,22 @@ class Issue
     public function setDescription(string $description): void
     {
         $this->description = $description;
+    }
+
+    /**
+     * @return int
+     */
+    public function getDoneRatio(): int
+    {
+        return $this->doneRatio;
+    }
+
+    /**
+     * @param int $doneRatio
+     */
+    public function setDoneRatio(int $doneRatio): void
+    {
+        $this->doneRatio = $doneRatio;
     }
 
     /**
@@ -348,6 +381,22 @@ class Issue
     public function setCustomFields(array $customFields): void
     {
         $this->customFields = $customFields;
+    }
+
+    /**
+     * @return Journal[]
+     */
+    public function getJournals(): array
+    {
+        return $this->journals;
+    }
+
+    /**
+     * @param Journal[] $journals
+     */
+    public function setJournals(array $journals): void
+    {
+        $this->journals = $journals;
     }
 
     /**

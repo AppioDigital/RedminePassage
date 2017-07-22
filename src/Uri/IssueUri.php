@@ -38,6 +38,6 @@ class IssueUri extends Uri
      */
     protected function getDefaultParams(): array
     {
-        return array_merge(parent::getDefaultParams(), ['include' => 'attachments']);
+        return array_merge(parent::getDefaultParams(), ['include' => 'attachments,journals']);
     }
 }

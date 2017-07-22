@@ -34,6 +34,12 @@ class Issue
     /** @var string */
     private $description;
 
+    /** @var string|null */
+    private $notes;
+
+    /** @var bool */
+    private $privateNotes;
+
     /** @var string */
     private $startDate;
 
@@ -108,6 +114,26 @@ class Issue
     public function setDescription(string $description): void
     {
         $this->description = $description;
+    }
+
+    /**
+     * @param string $notes
+     * @param bool $privateNotes
+     */
+    public function setNotes(string $notes, bool $privateNotes = null): void
+    {
+        $this->notes = $notes;
+        if ($privateNotes !== null) {
+            $this->privateNotes = $privateNotes;
+        }
+    }
+
+    /**
+     * @param bool $privateNotes
+     */
+    public function setPrivateNotes(bool $privateNotes): void
+    {
+        $this->privateNotes = $privateNotes;
     }
 
     /**
@@ -199,6 +225,22 @@ class Issue
     }
 
     /**
+     * @return string|string
+     */
+    public function getNotes(): ?string
+    {
+        return $this->notes;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isPrivateNotes(): bool
+    {
+        return $this->privateNotes;
+    }
+
+    /**
      * @return Upload[]
      */
     public function getUploads(): array
@@ -268,6 +310,22 @@ class Issue
     public function hasDescription(): bool
     {
         return $this->description !== null;
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasNotes(): bool
+    {
+        return $this->notes !== null;
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasPrivateNotes(): bool
+    {
+        return $this->privateNotes !== null;
     }
 
     /**

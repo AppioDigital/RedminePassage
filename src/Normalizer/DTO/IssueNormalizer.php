@@ -49,6 +49,12 @@ class IssueNormalizer implements NormalizerInterface
         if ($object->hasDescription()) {
             $i['description'] = $object->getDescription();
         }
+        if ($object->hasNotes()) {
+            $i['notes'] = $object->getNotes();
+            if ($object->hasPrivateNotes()) {
+                $i['private_notes'] = $object->isPrivateNotes();
+            }
+        }
         if ($object->hasSubject()) {
             $i['subject'] = $object->getSubject();
         }

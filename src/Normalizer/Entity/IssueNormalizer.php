@@ -7,6 +7,7 @@ use Appio\Redmine\Entity\Attachment;
 use Appio\Redmine\Entity\CustomField;
 use Appio\Redmine\Entity\Issue;
 use Appio\Redmine\Entity\IssueProject;
+use Appio\Redmine\Entity\Journal;
 use Appio\Redmine\Entity\Priority;
 use Appio\Redmine\Entity\Status;
 use Appio\Redmine\Entity\Tracker;
@@ -43,6 +44,8 @@ class IssueNormalizer implements DenormalizerInterface
     const DUE_DATE_KEY = 'due_date';
 
     const ATTACHMENTS_KEY = 'attachments';
+
+    const JOURNALS_KEY = 'journals';
 
     const CUSTOM_FIELDS_KEY = 'custom_fields';
 
@@ -146,6 +149,20 @@ class IssueNormalizer implements DenormalizerInterface
             }
         }
 
+        $journals = [];
+        if (array_key_exists(self::JOURNALS_KEY, $objectData)) {
+            /** @var array $arrayJournals */
+            $arrayJournals = $objectData[self::JOURNALS_KEY];
+            foreach ($arrayJournals as $arrayJournal) {
+                $journals[] = $this->denormalizer->denormalize(
+                    $arrayJournal,
+                    Journal::class,
+                    $format,
+                    $context
+                );
+            }
+        }
+
         $customFields = [];
         if (array_key_exists(self::CUSTOM_FIELDS_KEY, $objectData)) {
             /** @var array $arrayCustomFields */
@@ -173,7 +190,8 @@ class IssueNormalizer implements DenormalizerInterface
             $dueDate,
             $assignedTo,
             $attachments,
-            $customFields
+            $customFields,
+            $journals
         );
     }
 
