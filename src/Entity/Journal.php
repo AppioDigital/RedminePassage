@@ -67,11 +67,11 @@ class Journal
      */
     public static function createFromArray(array $data, User $user): Journal
     {
-        CheckAttributeKeyUtil::checkKeys($data, [self::ID_KEY, self::NOTES_KEY, self::CREATED_ON_KEY]);
+        CheckAttributeKeyUtil::checkKeys($data, [self::ID_KEY, self::CREATED_ON_KEY]);
 
         return new self(
             $data[self::ID_KEY],
-            $data[self::NOTES_KEY],
+            $data[self::NOTES_KEY] ?? '',
             $data[self::PRIVATE_NOTES_KEY] ?? false,
             new DateTime($data[self::CREATED_ON_KEY]),
             $user
