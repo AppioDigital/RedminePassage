@@ -18,6 +18,10 @@ class Issue
 
     const DONE_RATIO_KEY = 'done_ratio';
 
+    const ESTIMATED_HOURS_KEY = 'estimated_hours';
+
+    const TOTAL_ESTIMATED_HOURS_KEY = 'total_estimated_hours';
+
     const ADDITIONAL_COSTS_ID = 1;
 
     const ADDITIONAL_COST_NAME = 'Více práce';
@@ -48,6 +52,12 @@ class Issue
 
     /** @var int */
     private $doneRatio;
+
+    /** @var float|null */
+    private $estimatedHours;
+
+    /** @var float|null */
+    private $totalEstimatedHours;
 
     /** @var Tracker */
     private $tracker;
@@ -195,6 +205,15 @@ class Issue
             $issue->setAssignedTo($assignedTo);
         }
 
+        // estimated hours
+        if (isset($data[self::ESTIMATED_HOURS_KEY])) {
+            $issue->setEstimatedHours($data[self::ESTIMATED_HOURS_KEY]);
+        }
+
+        if (isset($data[self::TOTAL_ESTIMATED_HOURS_KEY])) {
+            $issue->setTotalEstimatedHours($data[self::TOTAL_ESTIMATED_HOURS_KEY]);
+        }
+
         return $issue;
     }
 
@@ -260,6 +279,38 @@ class Issue
     public function setDoneRatio(int $doneRatio): void
     {
         $this->doneRatio = $doneRatio;
+    }
+
+    /**
+     * @return float|null
+     */
+    public function getEstimatedHours(): ?float
+    {
+        return $this->estimatedHours;
+    }
+
+    /**
+     * @param float|null $estimatedHours
+     */
+    public function setEstimatedHours(?float $estimatedHours): void
+    {
+        $this->estimatedHours = $estimatedHours;
+    }
+
+    /**
+     * @return float|null
+     */
+    public function getTotalEstimatedHours(): ?float
+    {
+        return $this->totalEstimatedHours;
+    }
+
+    /**
+     * @param float|null $totalEstimatedHours
+     */
+    public function setTotalEstimatedHours(?float $totalEstimatedHours): void
+    {
+        $this->totalEstimatedHours = $totalEstimatedHours;
     }
 
     /**
